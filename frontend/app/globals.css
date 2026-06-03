@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 33 100% 96%;
+  --foreground: 222 47% 11%;
+  --card: 36 100% 97%;
+  --card-foreground: 222 47% 11%;
+  --popover: 36 100% 97%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 243 75% 59%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 214 32% 91%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 214 32% 91%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 214 32% 91%;
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 243 75% 59%;
+  --radius: 0.9rem;
+  --tg-ink: #070816;
+  --tg-navy: #0f172a;
+  --tg-cream: #fff7ed;
+  --tg-rose: #fff1f2;
+  --tg-lilac: #eef2ff;
+  --tg-mint: #ecfeff;
+  --tg-primary: #4f46e5;
+  --tg-accent: #f59e0b;
+  --tg-soft-border: rgba(15, 23, 42, 0.1);
+  --tg-glow: rgba(245, 158, 11, 0.24);
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(245, 158, 11, 0.18), transparent 28rem),
+    radial-gradient(circle at 92% 12%, rgba(79, 70, 229, 0.16), transparent 30rem),
+    linear-gradient(135deg, #fff7ed 0%, #fff1f2 46%, #eef2ff 100%);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+[data-shell-role="tutor"] .bg-card {
+  background-color: #fff7ed !important;
+}
+
+[data-shell-role="parent"] .bg-card {
+  background-color: #fff1f2 !important;
+}
+
+[data-shell-role="student"] .bg-card {
+  background-color: #ecfeff !important;
+}
+
+[data-shell-role="admin"] .bg-card {
+  background-color: #f0fdfa !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Plus Jakarta Sans", Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.tg-logo-orb {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(245, 158, 11, 0.28), transparent 32%),
+    linear-gradient(145deg, #020617, #111827 58%, #30220f);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.24), 0 0 0 1px rgba(245, 158, 11, 0.55);
+}
+
+.tg-logo-orb::after {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  border-radius: inherit;
+  border: 1px solid rgba(245, 158, 11, 0.34);
+  pointer-events: none;
+}
+
+.tg-noise {
+  position: relative;
+}
+
+.tg-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+.tg-aurora {
+  background-size: 220% 220%;
+  animation: tg-aurora 14s ease-in-out infinite alternate;
+}
+
+.tg-grid-glow {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+.tg-lift {
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1), border-color 320ms ease;
+}
+
+.tg-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.16);
+}
+
+.tg-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.tg-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.tg-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+@keyframes tg-study-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--rotate, 0deg));
+  }
+  50% {
+    transform: translate3d(var(--x, 12px), var(--y, -16px), 0) rotate(calc(var(--rotate, 0deg) + 7deg));
+  }
+}
+
+.study-float {
+  animation: tg-study-float var(--duration, 8s) ease-in-out infinite;
+}
+
+@keyframes tg-aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .study-float,
+  .tg-aurora {
+    animation: none;
+  }
+
+  .tg-lift,
+  .tg-lift:hover {
+    transform: none;
+  }
+}
