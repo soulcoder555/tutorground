@@ -1,13 +1,36 @@
-node_modules
-.next
-dist
-coverage
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+.next-dev/
+out/
+
+# builds
+dist/
+build/
+
+# env files
 .env
 .env.local
 .env.*.local
-*.log
-uploads
-.vercel
-.railway
-backend/prisma/migrations/dev.db
 
+# logs
+*.log
+
+# uploads / runtime files
+uploads/
+
+# caches
+npm-cache/
+.npm-cache/
+
+# testing / coverage
+coverage/
+
+# deployment
+.vercel/
+.railway/
+
+# database
+backend/prisma/migrations/dev.db
